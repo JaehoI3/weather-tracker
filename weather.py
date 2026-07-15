@@ -37,6 +37,15 @@ def get_forecast(lat, lon):
     response = requests.get(url, params=params)
     return response.json()
 
+# Collect historical data for the last 5 years
+all_data = []
+
+for year in range(current_year - 5, current_year):
+    start = date(year, CAMP_MONTH, CAMP_START_DAY)
+    end = date(year, CAMP_MONTH, CAMP_END_DAY)
+    data = get_historical_weather(LATITUDE, LONGITUDE, start, end)
+    all_data.append(data)
+    print(f"Fetched data for {year}")
 # Convert to DataFrames and combine
 dfs = []
 for year_data in all_data:
