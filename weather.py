@@ -1,3 +1,8 @@
+import os
+os.environ['MPLBACKEND'] = 'Agg'
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import requests
 import pandas as pd
 import os
